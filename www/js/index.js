@@ -46,7 +46,7 @@ var app = {
         listeningElement.setAttribute('style', 'display:none;');
         receivedElement.setAttribute('style', 'display:block;');
 			
-         if(localStorage.inicio == true){
+         if(localStorage.inicio == false){
             testwindow = window.open("pagina.html");
 	     }else{
 	       testwindow = window.open("inicio.html");	

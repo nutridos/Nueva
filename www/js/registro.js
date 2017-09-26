@@ -27,7 +27,6 @@ function insertar(){
 								alert("registrado correctamente")
 							}
 						}
-				 	alert("entrar")
 					 if($.trim(nom).length>0 & $.trim(ape).length>0  & $.trim(fec).length>0  & $.trim(ema).length>0 & $.trim(pass).length>0)
 					 {
 						 $.ajax({
