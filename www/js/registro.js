@@ -82,8 +82,8 @@ if(xema=="" || xpass==""){
 }
 else{
 	if(ema==xema && pass==xpass){
-		window.location.href = "pagina.html";
 	    localStorage.inicio = true;
+		window.location.href = "pagina.html";
 	}
 	else{
 		document.getElementById("validar").innerHTML="La contraseña o el usuario es incorrecto";
