@@ -1,0 +1,107 @@
+<html>
+    <head>
+    <title>CALC</title>
+    <meta charset="utf-8">
+    <link href="style.css" rel="stylesheet" type="text/css">
+    <meta name="viewport" content="width=device-width, user-scalable=no">
+        <nav id="nav1">
+        <div id="menu">
+          
+          <div id="usuario">
+            <img src= "user.png">
+            <h1>USUARIO</h1>
+          </div>
+          
+          <ul>
+            <li><a href="inicio.html">Inicio</a> </li>
+            <li> <a href="index.html">Salir</a> </li>
+          </ul>
+
+        </div>
+        <header>
+          <button onclick="verMenu()" id="btnmenu"><img src="menu.svg" id="imgmenu"></button>
+        </header>
+        </nav>
+   </head>
+<body>
+<div class="display">
+    <input type="text" class="operacion" id="pantalla">
+    </div>
+<div class="botones">
+    <button onclick="agregar('7')"class="bot">7</button>
+    <button onclick="agregar('8')"class="bot">8</button>
+    <button onclick="agregar('9')"class="bot">9</button>
+    <button onclick="agregar('+')"class="bot activo">+</button>
+    <button onclick="agregar('4')"class="bot">4</button>
+    <button onclick="agregar('5')"class="bot">5</button>
+    <button onclick="agregar('6')"class="bot">6</button>
+    <button onclick="agregar('-')"class="bot activo">-</button>
+    <button onclick="agregar('1')"class="bot">1</button>
+    <button onclick="agregar('2')"class="bot">2</button>
+    <button onclick="agregar('3')"class="bot">3</button>
+    <button onclick="agregar('*')"class="bot activo">*</button>
+    <button class="bot activo" onclick="borrar()">C</button>
+    <button onclick="agregar('0')"class="bot">0</button>
+    <button onclick="agregar('.')"class="bot">.</button>
+    <button class="bot activo" onclick="igual()">=</button>
+</div>
+</body>
+    <script> 
+        
+        function agregar (caracter){
+            document.getElementById('pantalla').value+=caracter;
+        }
+        function borrar(){
+            document.getElementById('pantalla').value="";
+        }
+        
+        function igual(){
+            cadena = document.getElementById('pantalla').value;
+            if(cadena == '000'){
+                window.location.assign('codigo.html');
+            }
+            total = eval(cadena);
+            document.getElementById('pantalla').value=total;
+        }
+        function verMenu(){
+       document.getElementById('menu').classList.toggle('verMenu');
+   }
+
+   var menu = document.getElementById('menu');
+   menu.addEventListener('touchstart',toco,true);
+   menu.addEventListener('touchmove',mover,true);
+   menu.addEventListener('touchend',fin,true);
+
+   function toco(event){
+    toqueInicialX = event.targetTouches[0].pageX;
+   }
+
+
+   function mover(event){
+    toque = event.targetTouches[0];
+    menu.style.transition = "0s all";
+    
+    
+    anchoMenu = document.querySelector('#body').offsetWidth;
+    
+    desplazamiento= toqueInicialX-toque.pageX;
+
+    if(toque.pageX < anchoMenu){
+        menu.style.marginLeft ="-"+desplazamiento+"px";
+    }
+
+   }
+
+   function fin (){
+    menu.style.transition = ".3s all";
+    
+    if(toque.pageX < 20){
+        menu.classList.toggle('verMenu');
+        toque="";
+    }
+    menu.style.marginLeft="0px";
+
+   }
+
+    </script>
+</html>

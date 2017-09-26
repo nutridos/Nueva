@@ -1,0 +1,84 @@
+<html>
+<head>
+	<meta charset="utf-8"><!--LATIN-->
+	<meta name="viewport" content="width=device-width, user-scalable=no">
+	<link type="text/css" href="style.css" rel="stylesheet">
+	<title></title>
+     <nav id="nav2">
+        <div id="menu">
+          
+          <div id="usuario">
+            <img src="user.png">
+            <h1>USUARIO</h1>
+          </div>
+          
+          <ul>
+            <li><a href="inicio.html">Inicio</a> </li>
+            <li> <a href="index.html">Salir</a> </li>
+          </ul>
+
+        </div>
+        <header>
+          <button onclick="verMenu()" id="btnmenu"><img src="menu.svg" id="imgmenu"></button>
+        </header>
+        </nav>
+</head>
+
+
+<body id="bodynote">
+
+
+    <div class="nota">
+        <input type="text" placeholder="TITULO">
+        <textarea placeholder="Contenido"></textarea>
+        <button>Guardar</button>
+    </div>
+    
+    
+   
+	<button id="btnAgregar">+</button>
+
+    <script>
+        function verMenu(){
+       document.getElementById('menu').classList.toggle('verMenu');
+   }
+
+   var menu = document.getElementById('menu');
+   menu.addEventListener('touchstart',toco,true);
+   menu.addEventListener('touchmove',mover,true);
+   menu.addEventListener('touchend',fin,true);
+
+   function toco(event){
+    toqueInicialX = event.targetTouches[0].pageX;
+   }
+
+
+   function mover(event){
+    toque = event.targetTouches[0];
+    menu.style.transition = "0s all";
+    
+    
+    anchoMenu = document.querySelector('#body').offsetWidth;
+    
+    desplazamiento= toqueInicialX-toque.pageX;
+
+    if(toque.pageX < anchoMenu){
+        menu.style.marginLeft ="-"+desplazamiento+"px";
+    }
+
+   }
+
+   function fin (){
+    menu.style.transition = ".3s all";
+    
+    if(toque.pageX < 20){
+        menu.classList.toggle('verMenu');
+        toque="";
+    }
+    menu.style.marginLeft="0px";
+
+   }
+
+    </script>
+</body>
+</html>

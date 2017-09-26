@@ -1,0 +1,133 @@
+<html>
+<head>
+    <meta charset="utf-8"> <!--Latin-->
+    <meta name="viewport" content="width=device-width, user-scalable=no"> <!--user-scalable Elimina el zoom, width define el ancho de pantalla-->
+    <link type="text/css" href="style.css" rel="stylesheet"> 
+    <nav id="nav1">
+        <div id="menu">
+          
+          <div id="usuario">
+            <img src= "user.png">
+            <h1>USUARIO</h1>
+          </div>
+          
+          <ul>
+            <li><a href="inicio.html">Inicio</a> </li>
+            <li> <a href="index.html">Salir</a> </li>
+          </ul>
+
+        </div>
+        <header>
+          <button onclick="verMenu()" id="btnmenu"><img src="menu.svg" id="imgmenu"></button>
+        </header>
+        </nav>
+</head>
+    <body id="bodynote">
+        
+        <div class="nota">
+        <input type="text" placeholder="NOMBRE" id="a">
+        <input type="text" placeholder="E-MAIL" id="b">
+        <input type="text" placeholder="TEL" id="c">
+        <button onclick="guardar()">Guardar</button>
+    </div>
+        
+        <div class="nota2">
+        <input type="text" placeholder="NOMBRE" id="a">
+        <input type="text" placeholder="E-MAIL" id="b">
+        <input type="text" placeholder="TEL" id="c">
+        <button onclick="guardar()">Guardar</button>
+    </div>
+        
+        <div class="nota2">
+        <input type="text" placeholder="NOMBRE" id="a">
+        <input type="text" placeholder="E-MAIL" id="b">
+        <input type="text" placeholder="TEL" id="c">
+        <button onclick="guardar()">Guardar</button>
+    </div>
+        
+      
+        
+        <button id="btnAgregar">+</button>
+        
+    </body>
+    
+
+<script>
+    function verMenu(){
+       document.getElementById('menu').classList.toggle('verMenu');
+   }
+
+   var menu = document.getElementById('menu');
+   menu.addEventListener('touchstart',toco,true);
+   menu.addEventListener('touchmove',mover,true);
+   menu.addEventListener('touchend',fin,true);
+
+   function toco(event){
+    toqueInicialX = event.targetTouches[0].pageX;
+   }
+
+
+   function mover(event){
+    toque = event.targetTouches[0];
+    menu.style.transition = "0s all";
+    
+    
+    anchoMenu = document.querySelector('#body').offsetWidth;
+    
+    desplazamiento= toqueInicialX-toque.pageX;
+
+    if(toque.pageX < anchoMenu){
+        menu.style.marginLeft ="-"+desplazamiento+"px";
+    }
+
+   }
+
+   function fin (){
+    menu.style.transition = ".3s all";
+    
+    if(toque.pageX < 20){
+        menu.classList.toggle('verMenu');
+        toque="";
+    }
+    menu.style.marginLeft="0px";
+
+   }
+    
+     window.addEventListener('load', cargar, true);
+        function cargar (){
+            if(localStorage.getItem('datos')){
+                datosGuardado = localStorage.getItem('datos');
+                document.getElementById('a').value = datosGuardado;
+            }
+        }
+        
+        function guardar(){
+        datos = document.getElementById('b').value;
+            localStorage.setItem('datos1', datos);
+        }
+     window.addEventListener('load', cargar, true);
+        function cargar (){
+            if(localStorage.getItem('datos1')){
+                datosGuardado = localStorage.getItem('datos1');
+                document.getElementById('b').value = datosGuardado;
+            }
+        }
+        
+        function guardar(){
+        datos1 = document.getElementById('c').value;
+            localStorage.setItem('datos1', datos1);
+        }
+     window.addEventListener('load', cargar, true);
+        function cargar (){
+            if(localStorage.getItem('datos2')){
+                datosGuardado = localStorage.getItem('datos2');
+                document.getElementById('c').value = datosGuardado;
+            }
+        }
+        
+        function guardar(){
+        datos2 = document.getElementById('c').value;
+            localStorage.setItem('datos2', datos2);
+        }
+
+    </script>

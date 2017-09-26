@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Registro</title>
+	<script type="text/javascript" src="js/registro.js"></script>
+	<script type="text/javascript" src="js/jquery-3.2.1.min.js"></script>
+
+	<link rel="stylesheet" href="css/registro.css">
+</head>
+<body>
+<h2>Registro</h2>	
+	<div class="opa">Nombre</div>
+	<input type="text" id="nom" > <br>
+	<div class="opa">Apellidos</div>
+	<input type="text" id="ape" > <br>
+	<div class="opa">Fecha de nacimiento</div>
+	<input type="date" id="fec"> <br>
+	<div class="opa" >Correo</div>
+	<input type="email" id="ema" > <br>
+	<div class="opa">Contrasena</div>
+	<input type="password" id="pass"> <br>
+	<div class="opa">Valida contrasena</div>
+	<input type="password" id="pass2" > 
+	<div class="opa" id="validar" style="color: red"></div>
+ 	<button id="insert" value="Insert" onclick="insertar();" >Registrar</button>
+</body>
+</html> 

@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8"> <!--Latin-->
+    <meta name="viewport" content="width=device-width, user-scalable=no"> <!--user-scalable Elimina el zoom, width define el ancho de pantalla-->
+    <link type="text/css" href="style.css" rel="stylesheet"> 
+  <script type="text/javascript" src="js/jquery-3.2.1.min.js"></script>
+  <script type="text/javascript" src="js/notas.js"></script>
+  <script>
+    //Guardar
+    function guardar(j){
+$(document).ready(function(){
+          i = j;
+   d = '#des' + String(i);
+   g = '#gas' + String(i);
+   ej = '#guardar' + String(i);
+  alert(d);alert(g);alert(ej)
+  String(d);String(g);String(ej)
+       $(ej).click(function(){
+
+          des   = $(d).val()
+          gas   = $(g).val()
+      alert("Elemento guardado")
+       if($.trim(des).length>0 & $.trim(gas).length>0)
+       {
+         $.ajax({
+           type: "POST",
+           url:"https://aesir.000webhostapp.com/guardar.php",
+           data: {insert:"", des:$(d).val(), gas:$(g).val()},
+           crossDomain: true,
+           cache: false,
+
+           beforeSend: function(){ $(ej).val('Connecting...');},
+           success: function(data){
+               if(data=="success"){
+               alert("guardardd");
+               $(ej).val('submit');
+             }
+             else if(data=="error")
+             {
+              alert("error");
+             }
+          }
+        });
+      }return false;
+    });
+   });
+    }
+  </script>
+    <nav id="nav1">
+        <div id="menu">
+          
+
+          <div id="usuario">
+            <img src="user.png" id="imgusuario">
+            <h1>USUARIO</h1>
+          </div>
+          
+          <ul>
+            <li><a href="index.html">Salir</a> </li>
+          </ul>
+
+        </div>
+        <header>
+          <button onclick="verMenu()" id="btnmenu"><img src="menu.svg" id="imgmenu"></button>
+          <img src="aesir.png" id="aesir">
+        </header>
+        </nav>
+</head>
+    
+    
+<body id="bodynote">
+    <br><br>
+    <div id="egresos">
+        Egresos:  <input type="number" id="egre" placeholder="$0">
+    </div>
+    
+    
+   
+  <button id="btnAgregar" onclick="agregar()">+</button>
+    <script>
+        
+//MENU
+function verMenu(){
+        btnmenu.style.visibility = "hidden";
+        aesir.style.visibility = "hidden";
+       document.getElementById('menu').classList.toggle('verMenu');
+   }
+
+   var menu = document.getElementById('menu');
+   menu.addEventListener('touchstart',toco,true);
+   menu.addEventListener('touchmove',mover,true);
+   menu.addEventListener('touchend',fin,true);
+
+   function toco(event){
+    toqueInicialX = event.targetTouches[0].pageX;
+   }
+
+
+   function mover(event){
+    toque = event.targetTouches[0];
+    menu.style.transition = "0s all";
+   }
+
+   function fin (){
+    menu.style.transition = ".3s all";
+    
+    if(toque.pageX < 20){
+        menu.classList.toggle('verMenu');
+        toque="";
+    }
+    menu.style.marginLeft="0px";
+    btnmenu.style.visibility = "visible";
+    aesir.style.visibility = "visible";
+
+   }
+    </script>
+  </body>
+</html>
